@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // routes
 const appRoutes = require('./routes/routes');
 app.use('/', appRoutes);
-app.use(kue.app); // kue ui interface
+app.use('/kue', kue.app); // kue ui interface
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
@@ -45,7 +45,7 @@ if (!isProduction) {
 // no stacktraces leaked to user
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
-  res.render('error', {
+  res.render('notFound', {
     message: err.message,
     error: {}
   });
