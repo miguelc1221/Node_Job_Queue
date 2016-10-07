@@ -9,9 +9,9 @@
   </head>
   <body>
 
-    <h1>Jobs</h1>
     <div class="container">
-      <div class="row">
+      <h1 class="text-center">Job Queue</h1>
+      <div class="row search-bar">
         <form role="search" action="/job" method="POST">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search for url" name="url_term" id="url_term">
@@ -23,10 +23,28 @@
           </div>
         </form>
       </div>
-    </div>
 
-    <div>
-      <%- JSON.stringify(results) %>
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="list-group">
+            <% jobResults.forEach(function(job) { %>
+                <a href="#" class="list-group-item">Job: <%= job %></a>
+            <% }); %>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Panel title</h3>
+            </div>
+            <div class="panel-body">
+              Panel content
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </body>

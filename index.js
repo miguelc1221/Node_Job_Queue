@@ -13,16 +13,14 @@ app.set('view engine', 'ejs');
 
 // app Setup
 app.use(bodyParser.json());
+// extract data from the <form> element and add them to the request object.
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
 const appRoutes = require('./routes/routes');
 app.use('/', appRoutes);
-
-app.get('*', function(req, res) {
-  res.render('index', { results: [] });
-});
+app.use(kue.app); // kue ui interface
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
