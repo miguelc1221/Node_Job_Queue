@@ -1,32 +1,36 @@
 body {
-  background-color: #f5f5f5;
+	background-color: #f5f5f5;
 }
+
 
 /************
   index
 *************/
+
 .search-bar {
-  width: 500px;
-  margin: 50px auto 30px;
+	width: 500px;
+	margin: 50px auto 30px;
 }
 
 .srch-btn {
-  background-color: #039be5 !important;
+	background-color: #039be5 !important;
 }
 
 .jobs {
-  width: 500px;
-  margin: 0 auto;
+	width: 500px;
+	margin: 0 auto;
 }
+
 
 /*************
   job status
 *************/
+
 .selectedJob {
-  width: 500px;
-  margin: 100px auto;
+	width: 500px;
+	margin: 100px auto;
 }
 
 .panel-heading {
-  background-color: #039be5 !important;
+	background-color: #039be5 !important;
 }

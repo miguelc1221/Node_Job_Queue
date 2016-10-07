@@ -16,6 +16,9 @@
               <p><strong>URL</strong>: <%= selected_id.data.url %></p>
               <p><strong>STATE</strong>: <%= selected_id.state %></p>
               <p><strong>PROGRESS</strong>: <%= selected_id.progress %></p>
+              <%if (selected_id.state === 'complete') { %>
+                <p><strong>HTML</strong>: <a href="/job/<%= selected_id.id %>/html">HTML</a></p>
+              <% } %>
             </div>
           </div>
         </div>
