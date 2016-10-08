@@ -9,7 +9,7 @@ const jobs = kue.createQueue({ // create queue
 	disableSearch: false //  enable search indexes
 });
 
-const devUrl = 'http://localhost:3000'
+const devUrl = 'http://localhost:3000';
 let error;
 let urlHtml;
 
@@ -34,13 +34,13 @@ router.post('/job', (req, res) => {
 
 	job
 		.on('complete', (results) => {
-			error = ''
+			error = '';
 			return res.redirect('/');
 		})
 		.on('failed', (err) => {
-			console.log(err)
+			console.log(err);
 			return res.redirect('/');
-		})
+		});
 
 });
 
@@ -51,7 +51,7 @@ router.get('/job/:id', (req, res) => {
 	html = '';
 	const id = req.params.id;
 	// get all job ids in the queue
-	rp(`${devUrl}/kue/job/${id}`)
+	rp(`${ devUrl }/kue/job/${id}`)
 		.then((response) => {
 			// if id does exist, redirect home
 			const parseResponse = JSON.parse(response);
@@ -70,7 +70,8 @@ router.get('/job/:id', (req, res) => {
 });
 
 router.get('/job/:id/html', (req, res) => {
-	res.json(html)
+	res.set('Content-Type', 'text/html');
+	return res.send(html);
 });
 
 // get root file
@@ -78,7 +79,7 @@ router.get('/', (req, res) => {
 	// clear html
 	html = '';
 	// get all job ids in the queue
-	rp(`${devUrl}/kue/job/search?q=url html`)
+	rp(`${ devUrl }/kue/job/search?q=url html`)
 		.then((response) => {
 			let ids = JSON.parse(response);
 			return res.render('index', {
