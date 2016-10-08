@@ -41,7 +41,7 @@ Get job log
   attempts: { made: 1, remaining: 0, max: 1 } }
 
 ```
-### GET /job/:id/html' ###
+### GET /job/:id/html ###
 Get html for certain job
 
 ## KUE API ##
@@ -49,7 +49,7 @@ Kue is a priority job queue backed by redis, built for node.js.
 
 Kue also has a small UI Express application which exposes the following JSON API endpoints.
 
-* GET /job/search?q= ###
+* GET /job/search?q=
 * GET /stats
 * GET /job/:id
 * GET /job/:id/log
