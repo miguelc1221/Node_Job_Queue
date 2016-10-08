@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "job server",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miguelc1221/Node_Job_Queue"
+  },
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
+  "author": "Miguel Correa",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",

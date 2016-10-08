@@ -3,6 +3,7 @@
 Take home coding challenge
 
 ## Getting started ##
+Before starting make sure you have ```Redis``` installed on your machine. You can learn how to install Redis [here](http://redis.io/topics/quickstart)
 ```
   > Clone or download repository
   > cd Node_Job_Queue
