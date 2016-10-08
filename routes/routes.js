@@ -9,6 +9,7 @@ const jobs = kue.createQueue({ // create queue
 	disableSearch: false //  enable search indexes
 });
 
+const devUrl = 'http://localhost:3000'
 let error;
 let urlHtml;
 
@@ -49,13 +50,8 @@ router.get('/job/:id', (req, res) => {
 	error = '';
 	html = '';
 	const id = req.params.id;
-	// get my url for request(rp)
-	const requrl = url.format({
-		protocol: req.protocol,
-		host: req.get('host')
-	});
 	// get all job ids in the queue
-	rp(`${requrl}/kue/job/${id}`)
+	rp(`${devUrl}/kue/job/${id}`)
 		.then((response) => {
 			// if id does exist, redirect home
 			const parseResponse = JSON.parse(response);
@@ -81,14 +77,8 @@ router.get('/job/:id/html', (req, res) => {
 router.get('/', (req, res) => {
 	// clear html
 	html = '';
-	// get my url for request(rp)
-	const requrl = url.format({
-		protocol: req.protocol,
-		host: req.get('host')
-	});
-
 	// get all job ids in the queue
-	rp(`${requrl}/kue/job/search?q=url html`)
+	rp(`${devUrl}/kue/job/search?q=url html`)
 		.then((response) => {
 			let ids = JSON.parse(response);
 			return res.render('index', {
@@ -105,9 +95,7 @@ router.get('/', (req, res) => {
 jobs.process('url_worker', 20, (job, done) => {
 	let url = job.data.url;
 	// request the url that user submitted
-	rp({
-			uri: url
-		})
+	rp({ uri: url })
 		.then((res) => {
 			return done(null, res)
 		})
